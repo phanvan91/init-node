@@ -1,0 +1,14 @@
+.
+|-- config
+|-- migrations
+|-- models
+|-- modules
+|   `-- account
+|       |-- controllers
+|       |-- jobs
+|       |-- middleware
+|       |-- models
+|       |-- requests
+|       `-- services
+|-- routers
+`-- seeders

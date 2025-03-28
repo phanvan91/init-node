@@ -61,6 +61,12 @@ switch (command) {
             else console.log(stdout);
         });
         break;
+    case 'tree-structure':
+        exec('tree -d -L 3 --noreport --charset=ascii -I "node_modules|.git|dist|uploads" > structure.txt', (err, stdout, stderr) => {
+            if (err) console.error(stderr);
+            else console.log(stdout);
+        });
+        break;
     default:
         console.log('Unknown command');
 }

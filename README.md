@@ -71,15 +71,16 @@ modules/Product/
 
 ## 📄 Available Artisan Commands
 
-| Command | Description |
-|----|----|
+| Command | Description                              |
+|----|------------------------------------------|
 | `yarn artisan serve` | Start the development server with auto-reload |
-| `yarn artisan make-module ModuleName` | Generate a new module structure |
-| `yarn artisan make:model ModelName` | Generate a new Sequelize model |
-| `yarn artisan make:migration MigrationName` | Generate a new migration file |
-| `yarn artisan migrate` | Run all migrations |
-| `yarn artisan migrate:undo` | Rollback the last migration |
-| `yarn artisan seed` | Run all seeders |
+| `yarn artisan make-module ModuleName` | Generate a new module structure          |
+| `yarn artisan make:model ModelName` | Generate a new Sequelize model           |
+| `yarn artisan make:migration MigrationName` | Generate a new migration file            |
+| `yarn artisan migrate` | Run all migrations                       |
+| `yarn artisan migrate:undo` | Rollback the last migration              |
+| `yarn artisan seed` | Run all seeders                          |
+| `yarn artisan tree-structure` | Run structure source                     |
 
 ---
 
