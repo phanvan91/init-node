@@ -1,0 +1,19 @@
+{
+  "name": "init-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Phanvan",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.6"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  }
+}
