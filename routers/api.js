@@ -1,8 +1,8 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-const UserController = require('../modules/User/Controllers/UserController');
-
-apiRouter.get('/users', UserController.index);
+const AccountController = require('../modules/account/controllers/AccountController');
+apiRouter.get('/users', AccountController.index);
+apiRouter.post('/users', AccountController.create);
 
 module.exports = apiRouter;

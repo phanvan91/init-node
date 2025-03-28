@@ -1,13 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../../../models').sequelize;
 
-const User = sequelize.define('User', {
+const Account = sequelize.define('Account', {
   name: DataTypes.STRING,
   created_at: DataTypes.DATE,
   updated_at: DataTypes.DATE
 }, {
-  tableName: 'users',
+  tableName: 'accounts',
   underscored: true
 });
 
-module.exports = User;
+module.exports = Account;

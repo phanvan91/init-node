@@ -30,9 +30,9 @@ npm install
 cp .env.example .env
 
 # Start the development server (auto-reload)
-yarn dev
+yarn artisan serve
 # or
-npm run dev
+npm run artisan serve
 ```
 
 The server will be running at:
@@ -48,12 +48,12 @@ This project includes a **Module Generator Script** inspired by Laravel Artisan 
 
 **Create a new module:**
 ```bash
-node make-module.js User
+yarn artisan make-module User
 ```
 
 Example:
 ```bash
-node make-module.js Product
+yarn artisan make-module Product
 ```
 
 It will automatically generate the following structure:
@@ -69,12 +69,17 @@ modules/Product/
 
 ---
 
-## 📄 Available Commands
+## 📄 Available Artisan Commands
 
 | Command | Description |
 |----|----|
-| `yarn dev` / `npm run dev` | Start the development server with auto-reload |
-| `node make-module.js ModuleName` | Generate a new module structure |
+| `yarn artisan serve` | Start the development server with auto-reload |
+| `yarn artisan make-module ModuleName` | Generate a new module structure |
+| `yarn artisan make:model ModelName` | Generate a new Sequelize model |
+| `yarn artisan make:migration MigrationName` | Generate a new migration file |
+| `yarn artisan migrate` | Run all migrations |
+| `yarn artisan migrate:undo` | Rollback the last migration |
+| `yarn artisan seed` | Run all seeders |
 
 ---
 
@@ -95,7 +100,12 @@ project-root/
 ├── models/
 │   └── index.js
 ├── migrations/
+├── seeders/
+├── config/
+├── core/
+├── helpers/
 ├── make-module.js
+├── artisan.js
 ├── .env
 ├── .env.example
 └── README.md

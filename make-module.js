@@ -6,26 +6,26 @@ const path = require('path');
 const moduleNameInput = process.argv[2];
 
 if (!moduleNameInput) {
-    console.error('❗️ Vui lòng nhập tên module: node make-module.js User');
+    console.error('❗️ Please provide module name: node make-module.js user');
     process.exit(1);
 }
 
 const moduleName = moduleNameInput.charAt(0).toUpperCase() + moduleNameInput.slice(1);
-const basePath = path.join(__dirname, 'modules', moduleName);
+const basePath = path.join(__dirname, 'modules', moduleName.toLowerCase());
 
 // Folder và File Mapping
 const folders = {
-    Controllers: `${moduleName}Controller.js`,
-    Services: `${moduleName}Service.js`,
-    Jobs: `${moduleName}Job.js`,
-    Models: `${moduleName}.js`,
-    Requests: `${moduleName}Request.js`,
-    Middleware: `${moduleName}Middleware.js` // Laravel style, không có "s"
+    controllers: `${moduleName}Controller.js`,
+    services: `${moduleName}Service.js`,
+    jobs: `${moduleName}Job.js`,
+    models: `${moduleName}.js`,
+    requests: `${moduleName}Request.js`,
+    middleware: `${moduleName}Middleware.js`
 };
 
 // Template nội dung
 const templates = {
-    Controllers: `class ${moduleName}Controller {
+    controllers: `class ${moduleName}Controller {
   index(req, res) {
     res.send('${moduleName}Controller index');
   }
@@ -37,7 +37,7 @@ const templates = {
 
 module.exports = new ${moduleName}Controller();`,
 
-    Services: `class ${moduleName}Service {
+    services: `class ${moduleName}Service {
   async handle() {
     // Logic xử lý ${moduleName}
   }
@@ -45,7 +45,7 @@ module.exports = new ${moduleName}Controller();`,
 
 module.exports = new ${moduleName}Service();`,
 
-    Jobs: `class ${moduleName}Job {
+    jobs: `class ${moduleName}Job {
   async handle() {
     // Xử lý Job cho ${moduleName}
   }
@@ -53,7 +53,7 @@ module.exports = new ${moduleName}Service();`,
 
 module.exports = new ${moduleName}Job();`,
 
-    Models: `const { DataTypes } = require('sequelize');
+    models: `const { DataTypes } = require('sequelize');
 const sequelize = require('../../../models').sequelize;
 
 const ${moduleName} = sequelize.define('${moduleName}', {
@@ -67,7 +67,7 @@ const ${moduleName} = sequelize.define('${moduleName}', {
 
 module.exports = ${moduleName};`,
 
-    Requests: `class ${moduleName}Request {
+    requests: `class ${moduleName}Request {
   validate(req, res, next) {
     // Validate logic for ${moduleName}
     next();
@@ -76,7 +76,7 @@ module.exports = ${moduleName};`,
 
 module.exports = new ${moduleName}Request();`,
 
-    Middleware: `class ${moduleName}Middleware {
+    middleware: `class ${moduleName}Middleware {
   handle(req, res, next) {
     // Middleware logic for ${moduleName}
     next();
@@ -91,14 +91,14 @@ Object.entries(folders).forEach(([folder, file]) => {
     const dir = path.join(basePath, folder);
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
-        console.log(`📂 Tạo folder: ${dir}`);
+        console.log(`📂 Created folder: ${dir}`);
     }
 
     const filePath = path.join(dir, file);
     if (!fs.existsSync(filePath)) {
         fs.writeFileSync(filePath, templates[folder]);
-        console.log(`📄 Tạo file: ${filePath}`);
+        console.log(`📄 Created file: ${filePath}`);
     }
 });
 
-console.log(`✅ Đã tạo module "${moduleName}" đầy đủ thành công!`);
+console.log(`✅ Module "${moduleName}" has been created successfully!`);
