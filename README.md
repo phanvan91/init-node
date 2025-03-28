@@ -1,7 +1,7 @@
 
 # 🚀 NodeJS Modular Project
 
-A clean & structured NodeJS project inspired by Laravel's architecture, using **Express**, **Sequelize**, and fully modularized (Controllers, Services, Jobs, Middleware, Requests, Models).
+A clean and well-structured NodeJS project inspired by Laravel's architecture, using **Express**, **Sequelize**, and fully modularized with Controllers, Services, Jobs, Middleware, Requests, and Models.
 
 ---
 
@@ -9,32 +9,33 @@ A clean & structured NodeJS project inspired by Laravel's architecture, using **
 
 - **Node.js**: `v22.14.0`
 - **Package Manager**: `Yarn` (recommended) or `npm`
-- **Dev Tools**:
-    - `nodemon` (auto reload when code changes)
+- **Development Tools**:
+  - `nodemon` (for auto-reload when code changes)
 
 ---
 
 ## 🛠️ Installation & Development
 
 ```bash
-# Clone project
+# Clone the project
 git clone https://github.com/your-repo/your-project.git
 cd your-project
 
 # Install dependencies
 yarn
-# hoặc
+# or
 npm install
 
-# Copy environment file
+# Copy environment variables file
 cp .env.example .env
 
-# Start development server (auto-reload)
+# Start the development server (auto-reload)
 yarn dev
-# hoặc
+# or
 npm run dev
 ```
-Server sẽ chạy tại:
+
+The server will be running at:
 ```
 http://localhost:9000
 ```
@@ -43,19 +44,19 @@ http://localhost:9000
 
 ## 🧩 Module Generator
 
-Project đã có sẵn **Module Generator Script** giống Laravel Artisan:
+This project includes a **Module Generator Script** inspired by Laravel Artisan to quickly scaffold modules.
 
-**Tạo module mới:**
+**Create a new module:**
 ```bash
 node make-module.js User
 ```
 
-Ví dụ:
+Example:
 ```bash
 node make-module.js Product
 ```
 
-Nó sẽ tự tạo structure:
+It will automatically generate the following structure:
 ```
 modules/Product/
   ├── Controllers/ProductController.js
@@ -72,8 +73,8 @@ modules/Product/
 
 | Command | Description |
 |----|----|
-| `yarn dev` / `npm run dev` | Start development server (auto reload) |
-| `node make-module.js ModuleName` | Generate new module structure |
+| `yarn dev` / `npm run dev` | Start the development server with auto-reload |
+| `node make-module.js ModuleName` | Generate a new module structure |
 
 ---
 
