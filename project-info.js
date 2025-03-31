@@ -6,11 +6,12 @@ if (!fs.existsSync('./info')) {
   fs.mkdirSync('./info');
 }
 
-// Export structure
+// Export full structure (folders + files)
 try {
-  const structure = execSync('tree -d -L 3 --noreport --charset=ascii -I "node_modules|.git|dist|uploads"').toString();
+  const ignoreList = "node_modules|.git|dist|uploads|.idea|.sequelizerc|yarn.lock";
+  const structure = execSync(`tree -a -L 3 --noreport --charset=ascii -I "${ignoreList}"`).toString();
   fs.writeFileSync('./info/project-structure.txt', structure);
-  console.log('✅ Project structure exported.');
+  console.log('✅ Project structure (with files) exported.');
 } catch (err) {
   console.error('❌ tree command not available.');
 }

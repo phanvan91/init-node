@@ -1,8 +1,9 @@
-
 require('dotenv').config();
 const express = require('express');
 const { sequelize } = require('./models');
-const apiRouter = require('./routers/api');
+const bootstrapProviders = require('./bootstrap/app');
+const Kernel = require('./app/http/Kernel');
+const Handler = require('./app/exceptions/Handler');
 
 class AppServer {
     constructor() {
@@ -11,31 +12,29 @@ class AppServer {
     }
 
     async init() {
-        await this.connectDatabase();
+        await this.providers();
         this.middlewares();
-        this.routes();
         this.listen();
+        this.exceptionHandler();
     }
 
-    async connectDatabase() {
-        try {
-            await sequelize.authenticate();
-            console.log('✅ MySQL Connected Successfully!');
-        } catch (err) {
-            console.error('❌ Unable to connect to the database:', err.message);
-            process.exit(1);
-        }
+    async providers() {
+        await bootstrapProviders(this.app);
     }
 
     middlewares() {
-        this.app.use('/api', express.json());
+        Kernel.global.forEach((middleware) => middleware(this.app));
+        Kernel.api.forEach((middleware) => middleware(this.app));
+
+        this.app.use((req, res, next) => {
+            const error = new Error('Not Found');
+            error.status = 404;
+            next(error);
+        });
     }
 
-    routes() {
-        this.app.get('/', (req, res) => {
-            res.send('Hello World!');
-        });
-        this.app.use('/api', apiRouter);
+    exceptionHandler() {
+        this.app.use(Handler.handle);
     }
 
     listen() {
