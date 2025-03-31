@@ -1,12 +1,13 @@
 const HttpException = require('../../../app/exceptions/HttpException');
-
+const ExampleJob = require('../../../app/jobs/ExampleJob');
 class AccountController {
+
   index(req, res, next) {
-    try {
-      throw new HttpException('Test Exception', 401);
-    } catch (error) {
-      next(error); // QUAN TRỌNG: đẩy vào Handler
+    let data = {
+      ...req.query
     }
+    ExampleJob.dispatch(data)
+    res.send('AccountController index');
   }
 
   create(req, res) {

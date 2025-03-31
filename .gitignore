@@ -5,3 +5,5 @@ yarn.lock
 package-lock.json
 .idea
 info/
+/storage/*.key
+/storage/*.pem

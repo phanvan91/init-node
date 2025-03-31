@@ -77,6 +77,14 @@ switch (command) {
             else console.log(stdout);
         });
         break;
+    case 'queue:work':
+        const worker = spawn('node', ['worker.js', '--tries', param || '3'], {
+            stdio: 'inherit',
+        });
+        worker.on('close', (code) => {
+            process.exit(code);
+        });
+        break;
     default:
         console.log('Unknown command');
 }
