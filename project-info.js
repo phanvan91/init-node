@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { execSync } = require('child_process');
+const {execSync} = require('child_process');
 
 // Ensure info directory exists
 if (!fs.existsSync('./info')) {

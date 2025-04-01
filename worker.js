@@ -1,3 +1,4 @@
+require('./bootstrap/global');
 const QueueManager = require('./app/queues/QueueManager');
 const queueConfig = require('./config/queue');
 

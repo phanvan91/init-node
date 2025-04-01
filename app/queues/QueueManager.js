@@ -33,18 +33,18 @@ class QueueManager {
     if (queueConfig.default !== 'database') return;
 
     const jobs = await db.Job.findAll({
-      where: { reserved_at: null },
+      where: {reserved_at: null},
       limit: 5,
     });
 
     for (const job of jobs) {
-      const { data, filePath } = job.payload;
+      const {data, filePath} = job.payload;
       try {
         const path = require('path');
         const fullPath = path.resolve(process.cwd(), filePath);
         const JobClass = require(fullPath);
 
-        await JobClass.handle({ data });
+        await JobClass.handle({data});
 
         await job.destroy(); // ✅ XÓA job khi thành công
         console.log(`✅ Job ${job.id} completed & removed.`);

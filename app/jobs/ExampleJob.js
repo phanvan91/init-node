@@ -1,24 +1,15 @@
-const QueueManager = require('../queues/QueueManager');
-const queueConfig = require('../../config/queue');
-const path = require('path');
+const BaseJob = require(global.basejob);
 
-class ExampleJob {
-    static queueName = 'default';
-    static filePath = path.relative(process.cwd(), __filename); // Lưu path tương đối
+class ExampleJob extends BaseJob {
 
-    static async dispatch(data) {
-        if (queueConfig.default === 'sync') {
-            await this.handle({ data });
-            return;
-        }
+  constructor(data) {
+    super();
+    this.data = data;
+  }
 
-        const queue = QueueManager.createQueue(this.queueName);
-        await queue.add(data, this.filePath);
-    }
-
-    static async handle(job) {
-        console.log('📩 Processing ExampleJob:', job.data);
-    }
+  async handle() {
+    console.log('📩 Processing ExampleJob:', this.data);
+  }
 }
 
 module.exports = ExampleJob;

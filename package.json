@@ -18,7 +18,7 @@
     "sequelize-cli": "^6.6.2"
   },
   "scripts": {
-    "artisan": "node artisan.js",
+    "artisan": "node artisan/artisan.js",
     "dev": "nodemon app.js",
     "server": "nodemon app.js",
     "serve": "nodemon app.js",

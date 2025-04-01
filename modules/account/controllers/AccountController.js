@@ -1,12 +1,13 @@
 const HttpException = require('../../../app/exceptions/HttpException');
 const ExampleJob = require('../../../app/jobs/ExampleJob');
+
 class AccountController {
 
   index(req, res, next) {
     let data = {
       ...req.query
     }
-    ExampleJob.dispatch(data)
+    ExampleJob.dispatch(data, 'example');
     res.send('AccountController index');
   }
 
