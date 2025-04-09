@@ -176,6 +176,7 @@ config/auth.js            → JWT Configuration
 app/auth/JWTCore.js       → Sign & verify tokens
 app/auth/JWTGuard.js      → Parse token & get user data
 middlewares/auth.js       → Middleware to protect routes
+<<<<<<< HEAD
 ```
 
 ## 🚀 Happy Coding!
