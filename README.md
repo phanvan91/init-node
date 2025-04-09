@@ -116,8 +116,6 @@ project-root/
 
 ## 🚀 Happy Coding!
 
-
-
 ## 🔐 JWT Authentication Setup
 
 This system supports both token types:
@@ -177,74 +175,6 @@ Response:
 
 ```
 config/auth.js            → JWT Configuration
-app/auth/JWTCore.js       → Sign & verify tokens
-app/auth/JWTGuard.js      → Parse token & get user data
-middlewares/auth.js       → Middleware to protect routes
-```
-
-
-
-## 🔐 JWT Authentication Setup
-
-This project supports both JWT algorithms:
-
-### 1. HS256 (Secret Key)
-
-**.env config:**
-```
-JWT_ALGORITHM=HS256
-JWT_SECRET=your_secret_key
-JWT_EXPIRES_IN=1d
-```
-
-No .pem file needed, simple secret key based.
-
----
-
-### 2. RS256 (Private Key - PEM file)
-
-**.env config:**
-```
-JWT_ALGORITHM=RS256
-JWT_PRIVATE_KEY_PATH=./privates/keys/jwt.pem
-JWT_EXPIRES_IN=1d
-```
-
-You need to provide a private key file at:  
-`./privates/keys/jwt.pem`
-
-This is similar to how Laravel Passport works.
-
----
-
-### 🎯 Usage
-
-**Generate Token**
-```
-POST /api/login
-Response:
-{
-  "token": "eyJhbGciOiJSUzI1NiIsInR5..."
-}
-```
-
-**Verify Token**
-```
-GET /api/me
-Authorization: Bearer {token}
-Response:
-{
-  "message": "Token verified!",
-  "user": { "id": 1, "name": "PhanVan", "iat": ..., "exp": ... }
-}
-```
-
----
-
-### 📄 Auth Structure
-
-```
-config/auth.js            → JWT configuration
 app/auth/JWTCore.js       → Sign & verify tokens
 app/auth/JWTGuard.js      → Parse token & get user data
 middlewares/auth.js       → Middleware to protect routes
