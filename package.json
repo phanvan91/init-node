@@ -1,0 +1,32 @@
+{
+  "name": "init-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Phanvan",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.2",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "sequelize-cli": "^6.6.2"
+  },
+  "scripts": {
+    "artisan": "node artisan/artisan.js",
+    "dev": "nodemon app.js",
+    "server": "nodemon app.js",
+    "serve": "nodemon app.js",
+    "info:project": "node project-info.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "seed": "npx sequelize-cli db:seed:all",
+    "make:model": "npx sequelize-cli model:generate --name",
+    "make:migration": "npx sequelize-cli migration:generate --name"
+  }
+}
