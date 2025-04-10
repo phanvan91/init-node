@@ -1,12 +1,14 @@
 const db = require('../../models');
 const queueConfig = require('../../config/queue');
+const { Queue, Worker } = require('bullmq');
+const IORedis = require('ioredis');
 
 class QueueManager {
   static queues = {};
 
   static createQueue(name) {
     if (queueConfig.default === 'sync') return null;
-    if (queueConfig.default === 'redis') {
+    if (queueConfig.default === 'bullmq') {
       // const IORedis = require('ioredis');
       // const { Queue } = require('bullmq');
       // const connection = new IORedis(queueConfig.connections.redis);
@@ -14,13 +16,18 @@ class QueueManager {
       //     this.queues[name] = new Queue(name, { connection });
       // }
       // return this.queues[name];
+      if (!this.queues[name]) {
+        const connection = new IORedis(queueConfig.connections.redis);
+        this.queues[name] = new Queue(name, { connection });
+      }
+      return this.queues[name];
     }
     if (queueConfig.default === 'database') {
       return {
-        add: async (data, filePath) => {
+        add: async (jobName, jobData) => {
           await db.Job.create({
             queue: name,
-            payload: {data, filePath},
+            payload: jobData,
             available_at: new Date(),
           });
         },
@@ -43,8 +50,8 @@ class QueueManager {
         const path = require('path');
         const fullPath = path.resolve(process.cwd(), filePath);
         const JobClass = require(fullPath);
-
-        await JobClass.handle({data});
+        const jobInstance = new JobClass({ data });
+        await jobInstance.handle({data});
 
         await job.destroy(); // ✅ XÓA job khi thành công
         console.log(`✅ Job ${job.id} completed & removed.`);

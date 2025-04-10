@@ -7,7 +7,7 @@ class AccountController {
     let data = {
       ...req.query
     }
-    ExampleJob.dispatch(data, 'example');
+    ExampleJob.dispatch(data);
     res.send('AccountController index');
   }
 
