@@ -94,6 +94,16 @@ switch (command) {
       else console.log(stdout);
     });
     break;
+  case 'make:schedule':
+    if (!param) {
+      console.log('❗ Schedule name is required: yarn artisan make:schedule CleanLogJob');
+      process.exit(1);
+    }
+    exec(`node artisan/make/make-schedule.js ${param}`, (err, stdout, stderr) => {
+      if (err) console.error(stderr);
+      else console.log(stdout);
+    });
+    break;
 
   default:
     console.log('Unknown command');

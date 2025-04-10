@@ -100,6 +100,7 @@ modules/Product/
 | `yarn artisan migrate:undo`                 | Rollback the last migration                   |
 | `yarn artisan seed`                         | Run all seeders                               |
 | `yarn artisan queue:work`                   | Run queued job when using database            |
+| `yarn artisan make:schedule ScheduleName`   | Generate a new scheduled job in cron system   |
 | `yarn artisan tree-structure`               | Run structure source                          |
 
 ---
