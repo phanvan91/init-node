@@ -9,7 +9,7 @@ class Kernel {
   schedule() {
     console.log('Scheduling jobs...');
     // 🧹 Job dọn log chạy mỗi 5 phút
-    TestCron.schedule('*/1 * * * *');
+    // TestCron.schedule('*/1 * * * *');
 
     // 📊 Job báo cáo chạy mỗi ngày lúc 00:00
     // DailyReportJob.schedule('0 0 * * *');
