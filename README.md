@@ -40,6 +40,25 @@ The server will be running at:
 http://localhost:9000
 ```
 
+## ⚙️ Environment Configuration
+
+Inside `.env`:
+
+```
+QUEUE_CONNECTION=sync
+```
+
+Supported values:
+
+- `sync` – immediate job execution
+- `database` – use database queue
+
+To run queued jobs (when using `QUEUE_CONNECTION=database`):
+
+```bash
+yarn artisan queue:work
+```
+
 ---
 
 ## 🧩 Module Generator
