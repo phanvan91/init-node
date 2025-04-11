@@ -7,7 +7,8 @@ module.exports = {
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_CONNECTION
+    dialect: process.env.DB_CONNECTION,
+    logging: process.env.DB_LOGGING === 'true' ? console.log : false,
   },
   test: {
     username: process.env.DB_USERNAME,
