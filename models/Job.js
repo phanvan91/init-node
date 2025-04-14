@@ -1,14 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-  const Job = sequelize.define('Job', {
+
+  let tableName = 'jobs';
+
+  let timestamps = false;
+
+  let fillable = {
     queue: DataTypes.STRING,
     payload: DataTypes.JSON,
     attempts: DataTypes.INTEGER,
     reserved_at: DataTypes.DATE,
     available_at: DataTypes.DATE,
-  }, {
-    tableName: 'jobs',
+  };
+
+  const Job = sequelize.define('Job', fillable, {
+    tableName,
+    timestamps,
     underscored: true,
-    timestamps: false,
   });
   return Job;
 };
