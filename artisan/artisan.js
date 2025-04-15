@@ -42,7 +42,15 @@ switch (command) {
       console.log('Model name is required.');
       process.exit(1);
     }
-    runSpawn(npxCmd, ['sequelize-cli', 'model:generate', '--name', param]);
+    // Lấy thêm đối số thứ 3 nếu có
+    const moduleFlag = process.argv[4]; // có thể là undefined hoặc '--module=account'
+    const args = ['artisan/make/make-model.js', param];
+
+    if (moduleFlag) {
+      args.push(moduleFlag); // thêm vào nếu có
+    }
+
+    runSpawn(nodeCmd, args);
     break;
 
   case 'make:migration':
@@ -91,6 +99,22 @@ switch (command) {
       process.exit(1);
     }
     runSpawn(nodeCmd, ['artisan/make/make-job.js', param]);
+    break;
+
+  case 'make:controller':
+    if (!param) {
+      console.log('❗ Controller name is required. Example: yarn artisan make:controller Account [--module=account]');
+      process.exit(1);
+    }
+
+    const controllerModuleFlag = process.argv[4]; // ví dụ --module=account
+    const controllerArgs = ['artisan/make/make-controller.js', param];
+
+    if (controllerModuleFlag) {
+      controllerArgs.push(controllerModuleFlag);
+    }
+
+    runSpawn(nodeCmd, controllerArgs);
     break;
 
   case 'make:schedule':

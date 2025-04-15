@@ -31,6 +31,25 @@ fs
     db[model.name] = model;
   });
 
+// Load all models in the modules directory
+// Load models từ tất cả modules/*
+const modulesPath = path.join(__dirname, '..', 'modules');
+if (fs.existsSync(modulesPath)) {
+  fs.readdirSync(modulesPath).forEach(moduleDir => {
+    const modelsDir = path.join(modulesPath, moduleDir, 'models');
+    if (fs.existsSync(modelsDir)) {
+      fs.readdirSync(modelsDir)
+        .filter(file => file.endsWith('.js'))
+        .forEach(file => {
+          const modelPath = path.join(modelsDir, file);
+          const model = require(modelPath)(sequelize, Sequelize.DataTypes);
+          db[model.name] = model;
+        });
+    }
+  });
+}
+
+
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
@@ -38,6 +57,5 @@ Object.keys(db).forEach(modelName => {
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;

@@ -1,13 +1,21 @@
-const {DataTypes} = require('sequelize');
-const sequelize = require('../../../models').sequelize;
+module.exports = (sequelize, DataTypes) => {
 
-const Account = sequelize.define('Account', {
-  name: DataTypes.STRING,
-  created_at: DataTypes.DATE,
-  updated_at: DataTypes.DATE
-}, {
-  tableName: 'accounts',
-  underscored: true
-});
+  let tableName = 'accounts';
 
-module.exports = Account;
+  let timestamps = false;
+
+  let fillable = {
+    queue: DataTypes.STRING,
+    payload: DataTypes.JSON,
+    attempts: DataTypes.INTEGER,
+    reserved_at: DataTypes.DATE,
+    available_at: DataTypes.DATE,
+  };
+
+  const Job = sequelize.define('Job', fillable, {
+    tableName,
+    timestamps,
+    underscored: true,
+  });
+  return Job;
+};

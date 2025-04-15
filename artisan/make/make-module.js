@@ -18,7 +18,6 @@ const folders = {
   controllers: `${moduleName}Controller.js`,
   services: `${moduleName}Service.js`,
   jobs: `${moduleName}Job.js`,
-  models: `${moduleName}.js`,
   requests: `${moduleName}Request.js`,
   middleware: `${moduleName}Middleware.js`
 };
