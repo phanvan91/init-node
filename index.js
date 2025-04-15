@@ -14,19 +14,12 @@ class AppServer {
 
   async init() {
     await this.providers();
-    this.middlewares();
     this.listen();
     this.exceptionHandler();
   }
 
   async providers() {
     await bootstrapProviders(this.app);
-  }
-
-  middlewares() {
-
-   
-   
   }
 
   exceptionHandler() {

@@ -1,4 +1,5 @@
 const apiRouter = require('../routes/api');
+const webRouter = require('../routes/web');
 const express = require('express');
 const Kernel = require('./../app/http/Kernel');
 module.exports = class RouteServiceProvider {
@@ -8,9 +9,7 @@ module.exports = class RouteServiceProvider {
 
   async register() {
     Kernel.global.forEach((middleware) => middleware(this.app));
-    this.app.get('/', (req, res) => {
-      res.send('Hello World!');
-    });
+    this.app.use('/', webRouter);
 
     const apiGroup = express.Router();
     Kernel.api.forEach((middleware) => middleware(apiGroup));
@@ -22,6 +21,7 @@ module.exports = class RouteServiceProvider {
       error.status = 404;
       next(error);
     });
+
     console.log('📡 RouteServiceProvider Registered');
   }
 }
