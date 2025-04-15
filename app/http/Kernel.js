@@ -6,6 +6,6 @@ module.exports = {
     globalMiddleware,
   ],
   api: [
-    apiMiddleware,
+    apiMiddleware
   ],
 };

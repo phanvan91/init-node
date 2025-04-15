@@ -11,7 +11,6 @@ class AccountController {
     }
 
     let device = await Device.findAll();
-    console.log('xxx')
     // ExampleJob.dispatch(data);
     res.send(device);
   }
