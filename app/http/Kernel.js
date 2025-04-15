@@ -1,5 +1,5 @@
-const globalMiddleware = require('../../middlewares/global');
-const apiMiddleware = require('../../middlewares/api');
+const globalMiddleware = require('../../middleware/global');
+const apiMiddleware = require('../../middleware/api');
 
 module.exports = {
   global: [

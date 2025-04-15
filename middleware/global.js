@@ -1,5 +1,5 @@
 const express = require('express');
-const formDataParser = require('./formDataParser');
+const formDataParser = require('./FormDataParser');
 
 module.exports = (app) => {
   app.use(express.json());
