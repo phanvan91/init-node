@@ -1,14 +1,19 @@
 const HttpException = require('../../../app/exceptions/HttpException');
 const ExampleJob = require('../../../app/jobs/ExampleJob');
+const db = require('./../../../models/index');
+const Device = db.Device;
 
 class AccountController {
 
-  index(req, res, next) {
+  index = async (req, res, next) => {
     let data = {
       ...req.query
     }
-    ExampleJob.dispatch(data);
-    res.send('AccountController indexxx');
+
+    let device = await Device.findAll();
+    console.log('xxx')
+    // ExampleJob.dispatch(data);
+    res.send(device);
   }
 
   create(req, res) {

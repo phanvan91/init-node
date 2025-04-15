@@ -26,7 +26,10 @@ switch (command) {
   case 'dev':
   case 'server':
   case 'serve':
-    runSpawn(nodeCmd, ['index.js']);
+    const useNodemon = true;
+    const execCmd = useNodemon ? (isWin ? 'npx.cmd' : 'npx') : nodeCmd;
+    const serverArgs = useNodemon ? ['nodemon', 'index.js'] : ['index.js'];
+    runSpawn(execCmd, serverArgs);
     break;
 
   case 'make-module':
