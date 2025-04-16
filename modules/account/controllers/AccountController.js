@@ -2,8 +2,13 @@ const HttpException = require('../../../app/exceptions/HttpException');
 const ExampleJob = require('../../../app/jobs/ExampleJob');
 const db = require('./../../../models/index');
 const Device = db.Device;
+const Container = require('./../../../providers/Container');
 
 class AccountController {
+
+  constructor () {
+    // this.accountService = Container.make('AccountService');
+  }
 
   index = async (req, res, next) => {
     let data = {
