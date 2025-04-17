@@ -7,7 +7,7 @@ const Container = require('./../../../providers/Container');
 class AccountController {
 
   constructor () {
-    // this.accountService = Container.make('AccountService');
+    //this.accountService = Container.make('AccountService');
   }
 
   index = async (req, res, next) => {
