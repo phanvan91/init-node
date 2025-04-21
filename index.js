@@ -1,7 +1,7 @@
 require('dotenv').config();
 require('./bootstrap/global');
 const express = require('express');
-const {sequelize} = require('./models');
+const {sequelize} = require('./app/models');
 const bootstrapProviders = require('./bootstrap/app');
 const Kernel = require('./app/http/Kernel');
 const Handler = require('./app/exceptions/Handler');

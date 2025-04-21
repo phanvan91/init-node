@@ -1,4 +1,4 @@
-const db = require('../../models');
+const db = require('../models');
 const queueConfig = require('../../config/queue');
 const { Queue, Worker } = require('bullmq');
 const IORedis = require('ioredis');

@@ -1,4 +1,4 @@
-const {sequelize} = require('../models');
+const {sequelize} = require('../app/models');
 
 module.exports = class DatabaseServiceProvider {
   constructor(app) {

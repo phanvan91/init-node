@@ -1,7 +1,7 @@
 const HttpException = require('../../../app/exceptions/HttpException');
 const ExampleJob = require('../../../app/jobs/ExampleJob');
-const db = require('./../../../models/index');
-const Device = db.Device;
+const db = require('../../../app/models/index');
+const User = db.User;
 const Container = require('./../../../providers/Container');
 
 class AccountController {
@@ -15,7 +15,7 @@ class AccountController {
       ...req.query
     }
 
-    let device = await Device.findAll();
+    let device = await User.findAll();
     // ExampleJob.dispatch(data);
     res.send(device);
   }
