@@ -1,4 +1,4 @@
-const JWTGuard = require('../app/auth/JWTGuard');
+const JWTGuard = require('../auth/JWTGuard');
 
 module.exports = async (req, res, next) => {
   const guard = new JWTGuard(req);

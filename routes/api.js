@@ -1,9 +1,9 @@
 const express = require('express');
 const apiRouter = express.Router();
-const validate = require('../middleware/ValidateRequest');
+const validate = require('../app/middleware/ValidateRequest');
 const UserRequest = require('../app/http/requests/UserRequest');
 const AccountController = require('../modules/account/controllers/AccountController');
-const authMiddleware = require('../middleware/auth');
+const authMiddleware = require('../app/middleware/auth');
 
 apiRouter.get('/users', AccountController.index);
 apiRouter.post('/users', validate(UserRequest), AccountController.create);
