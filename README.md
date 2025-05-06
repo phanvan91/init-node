@@ -52,6 +52,7 @@ Supported values:
 
 - `sync` – immediate job execution
 - `database` – use database queue
+- `bullmq` – use redis queue
 
 To run queued jobs (when using `QUEUE_CONNECTION=database`):
 
