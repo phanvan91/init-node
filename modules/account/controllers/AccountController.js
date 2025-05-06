@@ -1,5 +1,3 @@
-const HttpException = require('../../../app/exceptions/HttpException');
-const ExampleJob = require('../../../app/jobs/ExampleJob');
 const db = require('../../../app/models/index');
 const User = db.User;
 const Container = require('./../../../providers/Container');
